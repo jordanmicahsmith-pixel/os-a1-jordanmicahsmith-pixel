@@ -152,6 +152,8 @@ UPROGS=\
 	$U/_sync\
 	$U/_sleep\
 	$U/_find\
+	$U/_xargs\
+	$U/_trace\
 
 fs.img: mkfs/mkfs README $(UPROGS)
 	mkfs/mkfs fs.img README $(UPROGS)
