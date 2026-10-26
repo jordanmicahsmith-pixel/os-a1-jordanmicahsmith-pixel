@@ -192,15 +192,15 @@ syscall(void)
     p->trapframe->a0 = syscalls[num]();
 
     if((p->tracemask >> num) & 1){
-      printf("[%d] %s(", p->pid, sysnames[num]);
+      printk("[%d] %s(", p->pid, sysnames[num]);
       if(kind == 1){
-        if(ok) printf("\"%s\"", sbuf); else printf("?");
+        if(ok) printk("\"%s\"", sbuf); else printk("?");
       } else if(kind == 2)
-        printf("%d", (int)a0);
-      printf(") -> %d\n", (int)p->trapframe->a0);
+        printk("%d", (int)a0);
+      printk(") -> %d\n", (int)p->trapframe->a0);
     }
   } else {
-    printf("%d %s: unknown sys call %d\n", p->pid, p->name, num);
+    printk("%d %s: unknown sys call %d\n", p->pid, p->name, num);
     p->trapframe->a0 = -1;
   }
 }
